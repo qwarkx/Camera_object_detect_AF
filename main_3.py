@@ -43,6 +43,7 @@ while True:
     cv2.imshow('image', img)
     cv2.waitKey(1)
 '''
+
 while True:
     success, img = cap.read()
     results = model(img, stream=True)
@@ -55,7 +56,7 @@ while True:
             x1, y1, x2, y2 = box.xywh[0]
             x1, y1, w1, h1 = int(x1), int(y1), int(x2), int(y2)
             w, h = w1-x1, h1-y1
-            cvzone.cornerRect(img, (x1, y1, w, h), l=30)
+            cvzone.cornerRect(img, (x1, y1, w, h), l=1)
             cox_conf = box.conf[0]*100
             conf = math.ceil(cox_conf) / 100
             cls = int(box.cls[0])
@@ -64,3 +65,4 @@ while True:
 
     cv2.imshow('Image', img)
     cv2.waitKey(1)
+
